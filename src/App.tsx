@@ -1,13 +1,24 @@
-import React from 'react';
+import { CreateProduct } from "./conponents/CreateProduct";
+import { ErrorMessage } from "./conponents/ErrorMessage";
+import { Loader } from "./conponents/Loader";
+import { Modal } from "./conponents/Modal";
 import {Product} from "./conponents/Product";
-import {products} from "./data/products";
+import {useProducts} from "./hooks/products";
 
 function App() {
+   
+   const {loading, products, error} = useProducts()
+
    return (
-       <div className='container mx-auto max-w-2xl pt-5'>
-          <Product product={products[0]}/>
-          <Product product={products[1]}/>
-       </div>
+   <div className='container mx-auto max-w-2xl pt-5'>
+      {loading && <Loader />}
+      {error &&  <ErrorMessage error={error}/>}
+      {products.map(product => <Product key={product.id} product={product}/>)}   
+   
+      <Modal title="Create new product">
+         <CreateProduct/>
+      </Modal>
+   </div>
    )
 }
 

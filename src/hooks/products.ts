@@ -7,6 +7,11 @@ export function useProducts() {
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState('');
 
+
+   function addProduct(product: IProduct) {
+      setProducts(prev => [...prev, product])
+   }
+
    useEffect(() => {
       fetchProducts();
    },[])
@@ -25,5 +30,5 @@ export function useProducts() {
          setError(error.message)     
       }
    }
-   return {products, loading, error}
+   return {products, loading, error, addProduct}
 }

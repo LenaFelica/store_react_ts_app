@@ -20,14 +20,16 @@ export function Product ({product}: ProductProps) {
          <p>{ product.title }</p>
          <p className="font-bold">{ product.price}</p>
          <button 
-             onClick={()=> setDetails(prev => !prev)}
-             className={btnClasses.join(' ')}
-         >{details ? 'Hide Details' : 'Show Details'}</button>
+             onClick={()=> setDetails(prev => !prev)} // состояние toggle
+             className={btnClasses.join(' ')} //метод массив ане может быть применен к сторе, поэтому join(' ') и соединяется все через пробел
+         >
+            {details ? 'Hide Details' : 'Show Details'}
+         </button>
 
          {details && 
           <div>
             <p>{ product.description }</p>
-            <p>Rate: <span style={{ fontWeight: 'bold'}}>{product.rating.rate}</span></p>
+            <p>Rate: <span style={{ fontWeight: 'bold'}}>{product?.rating?.rate}</span></p>
          </div>
          }
       </div>

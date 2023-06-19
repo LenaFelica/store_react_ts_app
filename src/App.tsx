@@ -9,7 +9,7 @@ function App() {
       <>
        <Navigation />
        <Routes>
-          <Route path="/" element={<ProductsPage/>} />
+          <Route path="/products" element={<ProductsPage/>} />
           <Route path="/about" element={<AboutPage/>} />         
        </Routes>
       </>
